@@ -16,6 +16,8 @@ board::board()
 
 			tiles[j+(i*9)].x = j*w;
 			tiles[j + (i * 9)].y = y;
+			tiles[j + (i * 9)].h = h;
+			tiles[j + (i * 9)].w = w;
 			/*tiles[j + (i * 9)].w = j*w;
 			tiles[j + (i * 9)].h = x;*/
 			/*tiles[i].w = j*h;

@@ -5,7 +5,7 @@
 
 int main() 
 {
-	checkersp cha;
+	checkersp cha[24];
 	board bor;
 	tile til;
 	bor.tiles;
@@ -19,8 +19,40 @@ int main()
 	til.y = 0;
 	/*bor.w = 800 / 8;
 	bor.h = 800 / 8;*/
-	cha.x = 12;
-	cha.y = 0;
+	//cha.x = 12;
+	//cha.y = 0;
+
+	for (int i = 0; i < 6; i++)
+	{
+		cha[i].x = 50 + i *100;
+		cha[i].y = 50;
+		cha[i].radus =20;
+
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		
+		cha[i+6].x = 50 + i * 100;
+		cha[i+6].y = 150;
+		cha[i+6].radus = 20;
+
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		cha[i+12].x = 50 + i * 100;
+		cha[i+12].y = 750;
+		cha[i+12].radus = 20;
+
+	}
+	for (int i = 0; i < 6; i++)
+	{
+
+		cha[i + 18].x = 50 + i * 100;
+		cha[i + 18].y = 650;
+		cha[i + 18].radus = 20;
+
+	}
+
 	std::cout << "walcome to chackers game" << std::endl;
 	sfw::initContext(800, 800, "sfw");
 	sfw::setBackgroundColor(BLUE);
@@ -28,9 +60,17 @@ int main()
 	{
 		bor.draw();
 		//til.draw();
-		cha.draw();
-		cha.update();
-		cha.checkCollison();
+		for (int i = 0; i < 24; i++)
+		{
+			cha[i].draw();
+			cha[i].update();
+		}
+		//cha[til.x].update();
+		//cha.draw();
+		//cha.update();
+		//cha.checkCollison();
+		sfw::drawCircle(sfw::getMouseX(), sfw::getMouseY(), 20);
+		/*sfw::drawCircle(150, 750, 20, 12, RED);*/
 	}
 	sfw::termContext();
 }

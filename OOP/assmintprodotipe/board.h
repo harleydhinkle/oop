@@ -11,6 +11,6 @@ public:
 	float x;
 	float y;
 	board();
-	virtual void update();
-	virtual void draw();
+	void update();
+	void draw();
 };

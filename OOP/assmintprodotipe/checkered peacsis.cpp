@@ -1,14 +1,15 @@
 #include "checkered peacsis.h"
 #include "sfwdraw.h"
 #include<iostream>
+#include <cmath>
 checkersp::checkersp()
 {
 	
 }
-bool checkersp::checkCollison()
+bool checkersp::checkCollison(float otherX, float otherY, float otherRadius)
 {
-	float dis = (x2 - x) * 2 + (y2 - y) * 2;
-	if (dis < radus + radus)
+	float dis = sqrt((otherX - x) *(otherX - x) + (otherY - y) * (otherY - y));
+	if (dis < radus + otherRadius)
 	{
 
 		return true;
@@ -17,79 +18,41 @@ bool checkersp::checkCollison()
 	{
 		return false;
 	}
-	checkCollison() == false;
+	/*checkCollison() == false;*/
 }
 void checkersp::update()
 {
-	float dis = (x2-x)*2+(y2-y)*2;
-	if (checkCollison() == true) 
+	//float dis = (x2-x)*2+(y2-y)*2;
+	
+	
+	if (checkCollison(sfw::getMouseX(), sfw::getMouseY(), 20))
 	{
-		for (int i = 0; i < 24; i++)
+		if (sfw::getMouseButton(0) == true) 
 		{
-			for (int j = 0; j < 1; j++)
-			{
-
-
-
-				if (tiles[j].x == sfw::getMouseX())
-				{
-					if (tiles[j].y == sfw::getMouseY())
-					{
-
-					}
-				}
-			}
+			x = sfw::getMouseX();
+			y = sfw::getMouseY();
 		}
-	}
-		
-	//if (sfw::getMouseButton(0) == true) 
-	//{
-	//	for (int i = 0; i < 24; i++) 
-	//	{
-	//		for (int j = 0; j < 1; j++) 
-	//		{
-	//			if (tiles[j].x == sfw::getMouseX())
-	//			{
-	//				if (tiles[j].y == sfw::getMouseY())
-	//				{
-	//					/*if (sfw::getMouseButton(0)  == false)
-	//					{
-	//						sfw::drawCircle(tiles[i].x + 50, tiles[i].y + 50, 20);
+		/*else
+		{
 
-	//					}*/
-	//				}
-	//			}
-	//		}
-	//		
-	//		
-	//	}
-	//	
-	//}
-	for (int i = 0; i < 1; i++) {
-		for (int j = 0; j < 1; j++) {
-			if (sfw::getMouseButton(0) == false)
-			{
-				sfw::drawCircle(sfw::getMouseX(), sfw::getMouseY(),radus);
-
-			}
-		}
+		}*/
 	}
+	
 }
 
 void checkersp::draw()
 {
-	float x = 50;
-	float y = 50;
-	for (int i = 0; i < 12; i++) 
-	{
-		/*sfw::drawCircle(tiles[i].x, tiles[i].y , 20);*/
-		
-		sfw::drawCircle(tiles[i].x + x, tiles[i].y + x, radus,12,RED);
-		for (int j = 0; j < 12; j++)
-		{
-			/*sfw::drawCircle(tiles[i].x, tiles[i].y , 20);*/
+	sfw::drawCircle(x, y, radus,12,RED);
+	//for (int i = 0; i < 12; i++) 
+	//{
+	//	/*sfw::drawCircle(tiles[i].x, tiles[i].y , 20);*/
+	//	
+	//	sfw::drawCircle(tiles[i].x + x, tiles[i].y + x, radus,12,RED);
+	//	for (int j = 0; j < 12; j++)
+	//	{
+	//		/*sfw::drawCircle(tiles[i].x, tiles[i].y , 20);*/
 
-			sfw::drawCircle(tiles[j].x + x, tiles[j].y + 800 - y - 100, radus, 12, BLACK);
-		}
-	}
+	//		sfw::drawCircle(tiles[j].x + x, tiles[j].y + 800 - y - 100, radus, 12, BLACK);
+	//	}
+	//}
 }
