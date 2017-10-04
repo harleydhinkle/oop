@@ -23,12 +23,14 @@ int main()
 	cha.y = 0;
 	std::cout << "walcome to chackers game" << std::endl;
 	sfw::initContext(800, 800, "sfw");
-	sfw::setBackgroundColor(BLACK);
+	sfw::setBackgroundColor(BLUE);
 	while (sfw::stepContext())
 	{
 		bor.draw();
 		//til.draw();
 		cha.draw();
+		cha.update();
+		cha.checkCollison();
 	}
 	sfw::termContext();
 }
